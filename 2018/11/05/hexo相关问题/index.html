@@ -52,7 +52,7 @@
               <li>
                 <a href="/">
                   
-                  Home
+                  ��ҳ
                   
                 </a>
               </li>
@@ -60,7 +60,7 @@
               <li>
                 <a href="/archives">
                   
-                  Archives
+                  ȫ������
                   
                 </a>
               </li>
@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-11-05</span>
-            <span class="time">21:35:12</span>
+            <span class="time">21:51:29</span>
           </span>
           
           <!--  Categories  -->
@@ -122,7 +122,10 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <h1 id="hexo相关问题"><a href="#hexo相关问题" class="headerlink" title="hexo相关问题"></a>hexo相关问题</h1><p>今天在上传博客的时候发现了一个小错误，随后google后发现了问题的解决办法，本着分享记录的心态，下面说一下解决办法。问题显示如下：</p>
+          
+<p>今天将自己的博客优化了一下，感觉不错</p>
+
+<h1 id="hexo相关问题"><a href="#hexo相关问题" class="headerlink" title="hexo相关问题"></a>hexo相关问题</h1><p>今天在上传博客的时候发现了一个小错误，随后google后发现了问题的解决办法，本着分享记录的心态，下面说一下解决办法。问题显示如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Process failed: _posts/从零开始搭建个人blog.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:</span><br></pre></td></tr></table></figure>
 <p>出现这样的问题要去上传失败的博客里查看一下自己的代码问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: 从零开始搭建个人blog</span><br><span class="line"></span><br><span class="line">categories:杂项#这里缺少一个空格</span><br><span class="line"></span><br><span class="line">post:日常小记 #这里缺少一个空格</span><br><span class="line"></span><br><span class="line">#也就是说每一个 标签：后需要一个空格</span><br></pre></td></tr></table></figure>
