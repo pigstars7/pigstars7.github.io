@@ -1,274 +1,196 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>pigstars7</title>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
   <meta name="author" content="John Doe">
-
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="pigstars7">
+  <meta property="og:description" content="">
   <meta property="og:site_name" content="pigstars7">
-
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="pigstars7" type="application/atom+xml">
   
   
-
-  
-    <meta property="og:image" content="">
-  
-
-  
-  <link href="/css/images/favicon.ico" rel="icon">
+    <link rel="icon" href="/favicon.png">
   
 
-  <link rel="alternate" href="/atom.xml" title="pigstars7" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <!-- Site Title -->
+  <title>pigstars7</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
   
+  <link rel="stylesheet" href="/css/style.light.css">
 
-
-  <!-- baidu webmaster push -->
-  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+  <!-- Google Analytics -->
+  
 
 </head>
-</html>
 
-<body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">pigstars7</a></h1>
-  <h2><a href="/"></a></h2>
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">pigstars7</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Home Page Post List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      
+        <div class="post-item-wrapper">
+  <a href="/2018/11/02/LinuxC编程中遇到的问题01/" class="post-title">
+      Untitled Post
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2018-11-02</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">No Post Excerpt</div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        <div class="untagged">Untagged</div>
+      
+    </div>
+  </div>
 </div>
-<nav id="main-nav" class="alignright">
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-11-02T13:53:41.710Z"><a href="/2018/11/02/LinuxC编程中遇到的问题01/">2018-11-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/11/02/LinuxC编程中遇到的问题01/"></a></h1>
-  
 
-    </header>
-    <div class="entry">
       
-        <h1 id="Linux下用16进制输出指针地址遇到的问题"><a href="#Linux下用16进制输出指针地址遇到的问题" class="headerlink" title="Linux下用16进制输出指针地址遇到的问题"></a>Linux下用16进制输出指针地址遇到的问题</h1><p>在学习LinuxC指针中，按书上的代码本来用一个X%就可以输出地址的，</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i49SfS.png" alt="i49SfS.png"></p>
-<p>结果编译器报错了，报错如下：</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i4pmMd.png" alt="i4pmMd.png"></p>
-<p>后来Google后发现问题，在于%X希望的是是一个’nsigned int’,但是我给的是一个指针。参考，<code>C11</code>标准，章节§7.21.6.1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o,u,x,X</span><br><span class="line">unsigned int参数在样式dddd中转换为无符号八进制（o），无符号十进制（u）或无符号十六进制表示法（x或X）; [...]</span><br></pre></td></tr></table></figure>
-<p>提供无效参数会调用未定义行为。</p>
-<p>应该用%p来打印地址。对于指针类型，不会发生默认参数提升。</p>
-<p>之后就能输出了：</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i4pnsA.png" alt="i4pnsA.png"></p>
-<p>ps:在windows中用dev是可以直接输出的，可能是标准不同？</p>
+        <div class="post-item-wrapper">
+  <a href="/2018/10/26/从零开始搭建个人blog/" class="post-title">
+      Untitled Post
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2018-10-26</div>
+      <div class="categories">
+        
+          Uncategorized
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">No Post Excerpt</div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        <div class="untagged">Untagged</div>
+      
+    </div>
+  </div>
+</div>
 
       
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href="javascript:void(0)" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
+</div>
 
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-10-26T13:21:27.391Z"><a href="/2018/10/26/从零开始搭建个人blog/">2018-10-26</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/10/26/从零开始搭建个人blog/"></a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="Github-hexo从零开始搭建个人blog"><a href="#Github-hexo从零开始搭建个人blog" class="headerlink" title="Github+hexo从零开始搭建个人blog"></a>Github+hexo从零开始搭建个人blog</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>拥有一个个人的博客是一件蛮酷的事儿，可以记录自己每次学习上的收获，也可以记录遇到的问题和解决办法，以便于分享给其它的的小伙伴。分享也是一种快乐嘛！这篇教程记录了我从零开始到可以在网络上浏览自己的博客的整个过程，以及过程中遇到的问题，话不多说，直接开干。</p>
-<h2 id="00X00-Github和hexo是啥？"><a href="#00X00-Github和hexo是啥？" class="headerlink" title="00X00 Github和hexo是啥？"></a>00X00 Github和hexo是啥？</h2><p>Hexo，不是新的亚洲男子组合，而是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub上，是搭建博客的首选框架。总之，用就对了。至于Github是负责托管你博客内容的，估计能看到这篇文章的小伙伴都知道Github是啥，就不再多赘述。</p>
-<h2 id="00X01-安装Git"><a href="#00X01-安装Git" class="headerlink" title="00X01 安装Git"></a>00X01 安装Git</h2><p>首先去官网下载Git，链接：<a href="https://git-scm.com/download/win；根据自己的电脑系统版本下载相应文件。下载下来后进行安装，一路下一步后安装成功。在命令行输入git检测是否安装成功。成功则显示如下：" target="_blank" rel="noopener">https://git-scm.com/download/win；根据自己的电脑系统版本下载相应文件。下载下来后进行安装，一路下一步后安装成功。在命令行输入git检测是否安装成功。成功则显示如下：</a></p>
-<p><a href="https://imgchr.com/i/i6Ihyq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/10/27/i6Ihyq.md.png" alt="i6Ihyq.md.png"></a></p>
-<h2 id="00X02-安装Node-js"><a href="#00X02-安装Node-js" class="headerlink" title="00X02 安装Node.js"></a>00X02 安装Node.js</h2><p>Hexo基于Node.js，Node.js下载地址：<a href="https://nodejs.org/en/download/；下载安装包，下载好了安装，在安装中记得勾选add" target="_blank" rel="noopener">https://nodejs.org/en/download/；下载安装包，下载好了安装，在安装中记得勾选add</a> to path这个选项，将其添加到环境变量里。（ps:添加到环境的目的是可以快速方便的在cmd里打开它，这里不过多解释，想具体了解更多请自行搜索。）安装后，检测Node.js是否安装成功，在命令行中输入 :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6I2Wj.png" alt="i6I2Wj.png"></p>
-<p>检测npm是否安装成功，在命令行中输入:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IgYQ.png" alt="i6IgYQ.png"></p>
-<p>到这，安装Hexo的环境已经全部搭建完成。</p>
-<h2 id="00X03-安装Hexo"><a href="#00X03-安装Hexo" class="headerlink" title="00X03 安装Hexo"></a>00X03 安装Hexo</h2><p>Hexo就是我们的个人博客网站的框架， 这里需要自己在电脑里创建一个文件夹，可以命名为Blog，Hexo框架与以后你自己发布的网页都在这个文件夹中。创建好后，进入文件夹中，按住shift键，右击鼠标点击命令行：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IcFg.png" alt="i6IcFg.png"></p>
-<p>使用npm命令安装hexo,输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>安装完成后，新建我们的博客，输入:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>ps:这里的命令都是在刚刚创建的Blog文件夹中执行的。</p>
-<p>然后分别按顺序输入以下三条命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>这些命令在后面作介绍，完成后，打开浏览器输入地址：</p>
-<p>localhost:4000</p>
-<p>刚刚的三个命令依次是新建一篇博客文章、生成网页、在本地预览的操作。</p>
-<p>显示出下面的页面就表示我们搭建博客已经完成了八成啦！开心不？！激动不？！</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IImV.png" alt="i6IImV.png"></p>
-<p>但这只是本地上的，接下来我们要做的是，让它上线，可以通过网络去访问它。</p>
-<h2 id="00X04-创建自己的仓库并且部署SSH"><a href="#00X04-创建自己的仓库并且部署SSH" class="headerlink" title="00X04 创建自己的仓库并且部署SSH"></a>00X04 创建自己的仓库并且部署SSH</h2><p>登录到GitHub,如果没有GitHub帐号，使用你的邮箱注册GitHub帐号。点击GitHub中的New repository创建新仓库，仓库名应该为：<strong>用户名</strong>.github.io 这个<strong>用户名</strong>使用你的GitHub帐号名称代替，比如我的仓库名为：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6Ifln.png" alt="i6Ifln.png"></p>
-<p>然后在桌面右键打开Gitbash：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IWSs.png" alt="i6IWSs.png"></p>
-<p>设置user.name和user.email配置信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的GitHub用户名"</span></span><br><span class="line">git config --global user.email <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
-<p>生成ssh密钥文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的GitHub注册邮箱"</span></span><br></pre></td></tr></table></figure>
-<p>然后找到生成的.ssh的文件夹中的id_rsa.pub密钥，将内容全部复制</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6I4O0.png" alt="i6I4O0.png"></p>
-<p>ps:注意这个路径，一般是：C/User/你的win账户名称/.ssh/</p>
-<p>复制后，在GitHub里打开自己的设置页面：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IqfJ.png" alt="i6IqfJ.png"></p>
-<p>然后找到SSH and GPG keys,新建new SSH Key:</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IowT.png" alt="i6IowT.png"></p>
-<p>Title为标题，任意填即可，将刚刚复制的id_rsa.pub内容粘贴进去，最后点击Add SSH key。<br>在Git Bash中检测GitHub公钥设置是否成功，输入 ssh <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a> ：</p>
-<p><img src="[![i6IOp9.png](https://s1.ax1x.com/2018/10/27/i6IOp9.png" alt="">](<a href="https://imgchr.com/i/i6IOp9" target="_blank" rel="noopener">https://imgchr.com/i/i6IOp9</a>)</p>
-<p>出现上面则说明成功了。</p>
-<h2 id="00X05-推送博客"><a href="#00X05-推送博客" class="headerlink" title="00X05 推送博客"></a>00X05 推送博客</h2><p>接下来要做的就是推送博客，让自己的博客可以在网上正常浏览。解释一个概念，在blog根目录里的_config.yml文件称为<strong>站点</strong>配置文件，如下图：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6ITTU.png" alt="i6ITTU.png"></p>
-<p>打开站点的配置文件_config.yml，翻到最后修改为：</p>
-<p>deploy:<br>type: git<br>repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git<br>branch: master参考如下：</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IHkF.png" alt="i6IHkF.png"></p>
-<p>保存站点配置文件。</p>
-<p>其实就是给hexo d 这个命令做相应的配置，让hexo知道你要把blog部署在哪个位置，很显然，我们部署在我们GitHub的仓库里。最后安装Git部署插件，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>这时，我们分别输入三条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即 <a href="https://link.zhihu.com/?target=http%3A//xxxx.github.io" target="_blank" rel="noopener">http://xxxx.github.io</a> ,然后你就会发现自己的博客可以在网上访问啦！！！</p>
-<h2 id="00X06-写博客"><a href="#00X06-写博客" class="headerlink" title="00X06 写博客"></a>00X06 写博客</h2><p>我们开始正式发布上线博客文章，在命令行中输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">"博客名字"</span></span><br></pre></td></tr></table></figure>
-<p>我们会发现在blog根目录下的source文件夹中的_post文件夹中多了一个 <strong>博客名字.md</strong> 文件，使用Markdown编辑器打开，就可以开始编辑自己的博客啦，这里推荐一个markdown编辑器：Typotra或者ATOM，前者更友好，后者可以更炫酷。写好博文并且确认无误后，通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g、hexo d</span><br></pre></td></tr></table></figure>
-<p>生成、部署网页。随后可以在浏览器中输入域名浏览啦。</p>
-<h2 id="00X07-小结"><a href="#00X07-小结" class="headerlink" title="00X07 小结"></a>00X07 小结</h2><p>这里有几个问题，需要注意，有些小伙伴可能不是那么的一帆风顺，比如我就遇到过，在最后上传部署博客的时候hexo找不本地文件，上传空白的情况。这里我总结下这个问题的解决方法：</p>
-<p>方法一:</p>
-<p>在修改站点的配置文件_config.yml时，repo目试一下SSH地址和Https两个都试一下，我就是因为一开始用的SSH地址，造成的上传空白。</p>
-<p><img src="https://s1.ax1x.com/2018/10/27/i6IbY4.png" alt="i6IbY4.png"></p>
-<p>方法二：</p>
-<p>将repo目修改为：https://{yourname}:<a href="mailto:{yourpassword}@github.com" target="_blank" rel="noopener">{yourpassword}@github.com</a>/{yourname}/{yourname}.gthub.io.git</p>
-
-      
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+          
+      </ul>
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href="javascript:void(0)" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
   </div>
-</article>
-
-
-
-
-
-
-<nav id="pagination">
-  
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
-</div>
-
-  
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2018/11/02/LinuxC编程中遇到的问题01/"></a>
-      </li>
-    
-      <li>
-        <a href="/2018/10/26/从零开始搭建个人blog/"></a>
-      </li>
-    
-  </ul>
 </div>
 
 
-  
 
-  
-</aside>
-    <div class="clearfix"></div>
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2018 John Doe
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+</footer>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
 </script>
 
-
-<div id="bg"></div>
-</body>
+  </body>
 </html>
+
