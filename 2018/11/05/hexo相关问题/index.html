@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="pigstars7">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="IMPROVE IN HERE">
+  <meta property="og:title" content="hexo相关问题">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="IMPROVE IN HERE">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
   <meta property="og:image" content="http://yoursite.com">
   
     <link rel="alternate" href="/atom.xml" title="IMPROVE IN HERE" type="application/atom+xml">
@@ -35,8 +35,7 @@
 </head>
 
   <body>
-    <!-- Archive Header -->
-<!-- Page Header -->
+    <!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -44,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Blog Archives</p>
+          <p class="title">hexo相关问题</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -89,42 +88,55 @@
   </div>
 </header>
 
-<!-- Archive List -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-        <div class="archive-item">
-  <a href="/2018/11/05/hexo相关问题/" class="post-title">
-    hexo相关问题
-  </a>
-  <div class="date text-muted">Posted on 2018-11-05 21:07:09</div>
-</div>
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By pigstars7</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-11-05</span>
+            <span class="time">21:19:01</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
-      
-        <div class="archive-item">
-  <a href="/2018/10/26/从零开始搭建个人blog/" class="post-title">
-    Linux下用16进制输出指针地址遇到的问题
-  </a>
-  <div class="date text-muted">Posted on 2018-10-26 21:21:27</div>
-</div>
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
 
-      
+<a class="tag" href="/tags/杂项/">#杂项</a>
 
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h1 id="hexo相关问题"><a href="#hexo相关问题" class="headerlink" title="hexo相关问题"></a>hexo相关问题</h1><p>今天在上传博客的时候发现了一个小错误，随后google后发现了问题的解决办法，本着分享记录的心态，下面说一下解决办法。问题显示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Process failed: _posts/从零开始搭建个人blog.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:</span><br></pre></td></tr></table></figure>
+<p>出现这样的问题要去上传失败的博客里查看一下自己的代码问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: 从零开始搭建个人blog</span><br><span class="line"></span><br><span class="line">categories:杂项#这里缺少一个空格</span><br><span class="line"></span><br><span class="line">post:日常小记 #这里缺少一个空格</span><br><span class="line"></span><br><span class="line">#也就是说每一个 标签：后需要一个空格</span><br></pre></td></tr></table></figure>
+<p>之后就完美解决了；</p>
+<p>ps:</p>
+<p>有时候有什么问题了也可以用：</p>
+<p>hexo clean &amp; hexo g #清楚并重新生成页面，这个地方的clean会删除你原有保存的文件需要注意</p>
+<p>感谢一个博主，我是从他的博文里找到的解决办法的，他的博客地址是：<a href="http://fanzihui.github.io" target="_blank" rel="noopener">http://fanzihui.github.io</a></p>
+
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- Pagination -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-10 col-md-10 col-md-offset-1">
-      <ul class="pagination">
-          
-          
-      </ul>
-    </div>
-  </div>
-</div>
+</article>
 
 
 
