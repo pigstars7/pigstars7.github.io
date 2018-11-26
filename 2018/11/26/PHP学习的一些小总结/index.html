@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="pigstars7">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Linux下用16进制输出指针地址遇到的问题">
+  <meta property="og:title" content="PHP学习的一些小总结01">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="IMPROVE IN HERE">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Linux下用16进制输出指针地址遇到的问题</p>
+          <p class="title">PHP学习的一些小总结01</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-11-02</span>
+            <span class="date">2018-11-26</span>
             <span class="time">19:19:59</span>
           </span>
           
@@ -115,7 +115,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/编程/">#编程</a>
+<a class="tag" href="/tags/PHP/">#PHP</a>
 
 
           </div>
@@ -123,19 +123,25 @@
         <!-- Post Main Content -->
         <div class="post-content">
           
-<p>学习的路，道阻且长啊。。。</p>
+<p>关于PHP学习路上的一些问题总结以及知识点总结</p>
 
-<h1 id="Linux下用16进制输出指针地址遇到的问题"><a href="#Linux下用16进制输出指针地址遇到的问题" class="headerlink" title="Linux下用16进制输出指针地址遇到的问题"></a>Linux下用16进制输出指针地址遇到的问题</h1><p>在学习LinuxC指针中，按书上的代码本来用一个X%就可以输出地址的，</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i49SfS.png" alt="i49SfS.png"></p>
-<p>结果编译器报错了，报错如下：</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i4pmMd.png" alt="i4pmMd.png"></p>
-<p>后来Google后发现问题，在于%X希望的是是一个’nsigned int’,但是我给的是一个指针。参考，<code>C11</code>标准，章节§7.21.6.1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o,u,x,X</span><br><span class="line">unsigned int参数在样式dddd中转换为无符号八进制（o），无符号十进制（u）或无符号十六进制表示法（x或X）; [...]</span><br></pre></td></tr></table></figure>
-<p>提供无效参数会调用未定义行为。</p>
-<p>应该用%p来打印地址。对于指针类型，不会发生默认参数提升。</p>
-<p>之后就能输出了：</p>
-<p><img src="https://s1.ax1x.com/2018/11/02/i4pnsA.png" alt="i4pnsA.png"></p>
-<p>ps:在windows中用dev是可以直接输出的，可能是标准不同？</p>
+<h1 id="PHP学习的一些小总结01"><a href="#PHP学习的一些小总结01" class="headerlink" title="PHP学习的一些小总结01"></a>PHP学习的一些小总结01</h1><p>PHP的学习也学了一段时间，但是没有将笔记拿出来总结一下，也就一直放在OneNote里没有发到博客上。但是搭好的博客不能丢，所以就将我的一些学习笔记分享上来，其它的小伙伴也可以一起参考。</p>
+<h2 id="1-双引号和单引号有什么区别呢？"><a href="#1-双引号和单引号有什么区别呢？" class="headerlink" title="1.双引号和单引号有什么区别呢？"></a>1.双引号和单引号有什么区别呢？</h2><p>1.双引号解析变量，但是单引号不解析变量。</p>
+<p>2.在双引号里面插入变量，变量后面如果有英文或中文字符，它会把这个字符和变量拼接起来，视为一整个变量。一定要在变量后面接上特殊字符，例如空格等分开。 </p>
+<p>3.如果在双引号里面插变量的时候，后面不想有空格，可以拿大括号将变量包起来。 </p>
+<p>4.双引号解析转义字符，单引号不解析转义字符。但，单引号能解析\’ 和\ </p>
+<p>5.单引号效率高于双引号，尽可能使用单引号，因为双引号需要解析变量。 </p>
+<p>6.双号和单引号可以互插！！！双引号当中插入单引号，单引号当中插入变量，这个变量会被解析。 </p>
+<p>7.神奇的字符串拼接胶水——（.）点，用来拼接字符串。 </p>
+<p>8.我们将定界符声明字符串视为双引号一样的功能来看待。</p>
+<h2 id="2-主要有以下三空情况会产生空（null）类型："><a href="#2-主要有以下三空情况会产生空（null）类型：" class="headerlink" title="2.主要有以下三空情况会产生空（null）类型："></a>2.主要有以下三空情况会产生空（null）类型：</h2><p>1.通过变量赋值明确指定为变量的值为NULL</p>
+<p>2.一个变量没有给任何值</p>
+<p>3.使用函数unset()将变量销毁掉</p>
+<h2 id="3-两个跟null相关的函数，这两个函数非常常用"><a href="#3-两个跟null相关的函数，这两个函数非常常用" class="headerlink" title="3.两个跟null相关的函数，这两个函数非常常用"></a>3.两个跟null相关的函数，这两个函数非常常用</h2><p>empty()可以向括号中间传入一个变量。这个变量的值如果为false或者为null的话，返回true。</p>
+<p><a href="https://imgchr.com/i/FAgQSA" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/26/FAgQSA.md.png" alt="FAgQSA.md.png"></a></p>
+<p>sset()可以向括号中间传入一个或多个变量，变量与变量间用逗号分开。只要有一个变量为null，则返回false。否则，返回true。</p>
+<p><a href="https://imgchr.com/i/FAglQI" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/26/FAglQI.md.png" alt="FAglQI.md.png"></a></p>
+<p>unset()这个函数的功能是毁掉变量。unset（变量）括号中间插入想要毁掉的变量名，这个变量就会被毁掉。</p>
 
         </div>
       </div>
