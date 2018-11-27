@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2018-11-27</span>
-            <span class="time">21:15:23</span>
+            <span class="time">21:19:57</span>
           </span>
           
           <!--  Categories  -->
@@ -125,7 +125,7 @@
           
 <p>关于PHP学习上的一些问题总结</p>
 
-<h1 id="PHP学习的一些小总结02"><a href="#PHP学习的一些小总结02" class="headerlink" title="PHP学习的一些小总结02"></a>PHP学习的一些小总结02</h1><h3 id="自定义函数的语法规定，语法规定如下："><a href="#自定义函数的语法规定，语法规定如下：" class="headerlink" title="自定义函数的语法规定，语法规定如下："></a>自定义函数的语法规定，语法规定如下：</h3><p>function 函数名([参数名1[=值1], 参数名2[=值2], 参数名n[=值n]])<br>{<br>​       函数中的功能体<br>​    [return 返回值]<br>}</p>
+<h1 id="PHP学习的一些小总结02"><a href="#PHP学习的一些小总结02" class="headerlink" title="PHP学习的一些小总结02"></a>PHP学习的一些小总结02</h1><h3 id="自定义函数的语法规定，语法规定如下："><a href="#自定义函数的语法规定，语法规定如下：" class="headerlink" title="自定义函数的语法规定，语法规定如下："></a>自定义函数的语法规定，语法规定如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function 函数名([参数名1[=值1], 参数名2[=值2], 参数名n[=值n]])</span><br><span class="line">&#123;</span><br><span class="line">       函数中的功能体</span><br><span class="line">    [return 返回值]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="上面的语法规定中发现了如下特点："><a href="#上面的语法规定中发现了如下特点：" class="headerlink" title="上面的语法规定中发现了如下特点："></a>上面的语法规定中发现了如下特点：</h3><p>1.函数以function开始<br>2.function后面接空格，空格后接函数名<br>3.函数名与变量命名规则基本一样，但是不同的是：函数名不区分大小写<br>4.所谓参数其实就是变量<br>5.函数名后接括号，括号内跟参数，参数全都有[]（中括号）括起来了，代表参数可填可不填<br>6.如果有参数的话，参数后可以接（＝）等号，等号接默认值。参数值也是用[]（中括号）括起来的，代表选填<br>7.函数后的参数变量，主要功能是把函数体外的变量值，传入函数体内来使用，函数体的变量和函数体外的变量通常是两个不同的变量。<br>8.函数中的具体功能（功能体）用大括号括起来，代表这是一个函数的功能区间<br>9.函数可以有返回值也可以没有返回值，用[]（中括号）括起来的，代表选填。<br>10.return后接空格，空格后接返回值，若有return,return后的代码均不执行。<br>11.函数的执行没有顺序关系，可以在定义处之前的位置调用<br>12.函数不能被定义两次，即函数不能被重载</p>
 <h3 id="php自定义函数之内部函数"><a href="#php自定义函数之内部函数" class="headerlink" title="php自定义函数之内部函数"></a>php自定义函数之内部函数</h3><p>内部函数，是指在函数内部又声明了一个函数。<br>注意事项：<br>1.内部函数名，不能是已存在的函数名<br>2.假设在函数a里面定义了一个内部函数，不能定用两次函数a。<br>3.必须在自定义函数调用后才能调用它的内部函数。</p>
 
