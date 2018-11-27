@@ -99,7 +99,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-11-05</span>
+            <span class="date">2018-11-27</span>
             <span class="time">20:51:36</span>
           </span>
           
@@ -123,17 +123,30 @@
         <!-- Post Main Content -->
         <div class="post-content">
           
-<p>今天将自己的博客优化了一下，感觉不错</p>
+<p>nessus在kail的安装</p>
 
-<h1 id="hexo相关问题"><a href="#hexo相关问题" class="headerlink" title="hexo相关问题"></a>hexo相关问题</h1><p>今天在上传博客的时候发现了一个小错误，随后google后发现了问题的解决办法，本着分享记录的心态，下面说一下解决办法。问题显示如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Process failed: _posts/从零开始搭建个人blog.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:</span><br></pre></td></tr></table></figure>
-<p>出现这样的问题要去上传失败的博客里查看一下自己的代码问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: 从零开始搭建个人blog</span><br><span class="line"></span><br><span class="line">categories:杂项#这里缺少一个空格</span><br><span class="line"></span><br><span class="line">post:日常小记 #这里缺少一个空格</span><br><span class="line"></span><br><span class="line">#也就是说每一个 标签：后需要一个空格</span><br></pre></td></tr></table></figure>
-<p>之后就完美解决了；</p>
-<p>ps:</p>
-<p>有时候有什么问题了也可以用：</p>
-<p>hexo clean &amp; hexo g #清楚并重新生成页面，这个地方的clean会删除你原有保存的文件需要注意</p>
-<p>感谢一个博主，我是从他的博文里找到的解决办法的，他的博客地址是：<a href="http://fanzihui.github.io" target="_blank" rel="noopener">http://fanzihui.github.io</a></p>
+<h1 id="Kali-安装-Nessus-详细过程"><a href="#Kali-安装-Nessus-详细过程" class="headerlink" title="Kali 安装 Nessus 详细过程"></a>Kali 安装 Nessus 详细过程</h1><p>详细介绍在 Kali 中安装 Nessus 的详细过程步骤以及插件下载失败解决方法。<br>​    • 实验环境<br>​    • 安装过程<br>​    ○ 下载 Nessus<br>​    ○ 启动 Nessus<br>​    ○ 获取激活码<br>​    ○ 登陆 web 界面<br>• Nessus 下载插件出错的解决方法<br>• 参考</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Windows 宿主机：Windows 10 企业版<br>VMware：VMware Workstation Pro 12<br>Kali：kali-linux-2016.2-amd64</p>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>下载 Nessus<br>在官方网站下载对应的 Nessus 版本：<a href="http://www.tenable.com/products/nessus/select-your-operating-system" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/select-your-operating-system</a><br>这里选择 Kali 对应的版本 </p>
+<p>同意协议并下载<br>保存文件，默认保存到下载目录<br>安装 Nessus<br>下载得到的是 deb 文件，与普通 deb 文件安装方法类似，执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg-i Nessus-6.10.5-debian6_amd64.deb</span><br></pre></td></tr></table></figure>
+<h2 id="启动-Nessus"><a href="#启动-Nessus" class="headerlink" title="启动 Nessus"></a>启动 Nessus</h2><p>根据上一步安装成功后的提示信息<br>接下来进行启动和登陆 web 界面。<br>根据提示执行以下命令启动 nessus</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/nessusd start</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器地址栏输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:8834</span><br></pre></td></tr></table></figure>
+<p>启动后会自动下载插件，这个过程比较慢，需要耐心等待</p>
+<p><a href="https://imgchr.com/i/FELP2t" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/27/FELP2t.md.png" alt="FELP2t.md.png"></a></p>
+<p>下载成功后会出现登录界面：</p>
+<p><a href="https://imgchr.com/i/FV97wt" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/27/FV97wt.md.png" alt="FV97wt.md.png"></a></p>
+<p>登陆后就可以使用了，如下图所示</p>
+<p><a href="https://imgchr.com/i/FV9HTP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/27/FV9HTP.md.png" alt="FV9HTP.md.png"></a></p>
+<p>启动后可以查看nessus 启动状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntpl | grep nessus</span><br></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/FEqVhR" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/27/FEqVhR.md.png" alt="FEqVhR.md.png"></a></p>
+<p>成功！</p>
+<h2 id="Nessus-下载插件出错的解决方法"><a href="#Nessus-下载插件出错的解决方法" class="headerlink" title="Nessus 下载插件出错的解决方法"></a>Nessus 下载插件出错的解决方法</h2><p>根据下载失败页面的提示信息，执行更新操作</p>
+<p>/opt/nessus/sbin/nessuscli update</p>
+<p>如果运气好，估计会成功，</p>
 
         </div>
       </div>
