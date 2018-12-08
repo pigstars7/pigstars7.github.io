@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="pigstars7">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="御风CTF 部分write up">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="IMPROVE IN HERE">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://yoursite.com">
+  
+    <link rel="alternate" href="/atom.xml" title="IMPROVE IN HERE" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IMPROVE IN HERE</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">御风CTF 部分write up</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  All
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/pigstars7">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:879399341@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By pigstars7</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-12-08</span>
+            <span class="time">16:29:06</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/CTF/">#CTF</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          
+<p>思路的重要性，及知识面上的拓展</p>
+
+<h1 id="御风CTF-部分write-up"><a href="#御风CTF-部分write-up" class="headerlink" title="御风CTF 部分write up"></a>御风CTF 部分write up</h1><h2 id="1-秘密の约定"><a href="#1-秘密の约定" class="headerlink" title="1.秘密の约定"></a>1.秘密の约定</h2><p>这是一道签到题，根据提示关注相应的公众号即可得到flag</p>
+<p><a href="https://imgchr.com/i/F3ImCT" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/08/F3ImCT.md.png" alt="F3ImCT.md.png"></a></p>
+<h2 id="2-RSA"><a href="#2-RSA" class="headerlink" title="2.RSA"></a>2.RSA</h2><p>这是一道加密算法题，已知题目给了q,e,p的值，让求d的值，通过网上查阅RSA算法，了解了这个算法的大概内容，RSA算法的公钥，私钥以及它的加解密算法公式可以见下面这个表：</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F3Tkt0.png" alt="F3Tkt0.png"></p>
+<p>知道它的原理，并且这道题已经分离出来了两个素数pq，所以我们根据原理用python写出来相关的解密脚本就OK了，已知p,q，e求解d的解密代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#求欧拉函数f(n)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsa_get_d</span><span class="params">(p, q)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#求私钥</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsa_get_key</span><span class="params">(e, d)</span>:</span></span><br><span class="line">    k = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">if</span> (((d * k) + <span class="number">1</span>) % e) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> (d * k + <span class="number">1</span>) // e</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">p=<span class="number">4733986071546</span></span><br><span class="line">q=<span class="number">51149154</span></span><br><span class="line">e=<span class="number">14</span></span><br><span class="line">d=rsa_get_d(p, q)</span><br><span class="line"></span><br><span class="line">print(rsa_get_key(e,d))</span><br></pre></td></tr></table></figure>
+<h2 id="3-隐写"><a href="#3-隐写" class="headerlink" title="3.隐写"></a>3.隐写</h2><p>这道隐写题，用了摩斯密码的知识，通过图片上的摩斯密码转换知道flag就是名为666的那个音频文件里的内容，将其打开解析后，频率显示如下（也就是摩斯密码）：</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F3TD4P.png" alt="F3TD4P.png"></p>
+<p>解密转换后就可以得到flag｛jygg｝</p>
+<h2 id="4-不安全的上传"><a href="#4-不安全的上传" class="headerlink" title="4.不安全的上传"></a>4.不安全的上传</h2><p>这道题是道流量分析题，一开始思路走错了，觉得找到密码就可以，所以只专注分析POST里的信息内容，然后得到了一个关于hash的key值，我就一直以为这就是flag，只要把这个hash解密出来就好了，（走到了误区）。</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F3T4Nq.png" alt="F3T4Nq.png"></p>
+<p>后来仔细读题后，题目中已经给了提示，说是教授下载文件的时候泄密了，这个时候就要有敏感性，想到ftp协议，事实证明我的tcp/ip相关的知识掌握的还不够扎实，对这些信息不是很敏感。。。。再次整理思路后，得到pass内容，也就是flag</p>
+<p><a href="https://imgchr.com/i/F3ThEn" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/08/F3ThEn.md.png" alt="F3ThEn.md.png"></a></p>
+<h2 id="5-兵器1024所"><a href="#5-兵器1024所" class="headerlink" title="5.兵器1024所"></a>5.兵器1024所</h2><p>这道流量分析题，要掌握一个小知识，就是关于ttl，TTL是 Time To Live的缩写，该字段指定IP包被路由器丢弃之前允许通过的最大网段数量。TTL是IPv4包头的一个8 bit字段。TTL的作用是限制IP数据包在计算机网络中的存在的时间。<strong>TTL的最大值是255，TTL的一个推荐值是64。</strong>但是TTL的值是可以人为改动的。接下来我们看这个流量包：</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F37VUI.png" alt="F37VUI.png"></p>
+<p>我们可以看到这个流量包里的TTL值是不停的在变的，而且多观察一下底部的内容</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F37KxS.png" alt="F37KxS.png"></p>
+<p>可以发现这个字母是和ascii值对应的，然后跟据这个思路就可以得到flag，其中要注意的一点是：8的ASCII码是退格的意思，所以这个时候要删除相应的字母：</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F37saR.png" alt="F37saR.png"></p>
+<p>之后将得到的字母放一起就得到flag。</p>
+<h2 id="6-微信取证"><a href="#6-微信取证" class="headerlink" title="6.微信取证"></a>6.微信取证</h2><p>这个题下载下来，找到Msg文件里面的MicorMsg.db这个数据库文件，然后用databasebrowser可以恢复出来聊天内容。</p>
+<p><a href="https://imgchr.com/i/F37Lz8" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/08/F37Lz8.md.png" alt="F37Lz8.md.png"></a></p>
+<p><a href="https://imgchr.com/i/F3HSds" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/12/08/F3HSds.md.png" alt="F3HSds.md.png"></a></p>
+<p>但因为题目给关了，我恢复出来后不知道问的啥来着。。。。但我想找flag不是目的，能学习到内容，锻炼自己的见识面就算有收获了。</p>
+<h2 id="7-恢复系统日志"><a href="#7-恢复系统日志" class="headerlink" title="7.恢复系统日志"></a>7.恢复系统日志</h2><p>这个题目我是看到一个博客里的内容得到的思路，地址如下：<a href="https://m.sohu.com/a/238995341_354899/?pvid=000115_3w_a" target="_blank" rel="noopener">https://m.sohu.com/a/238995341_354899/?pvid=000115_3w_a</a></p>
+<p>通过博客里面的思路，我下载了danderspritz_evtx.py这个脚本，一开始还运行不了，因为提示我的python没有EVTX这个模块，所以我先通过pip 安装了这个模块后运行这个日志恢复脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./danderspritz_evtx.py -i delete.evtx -o Security_fixed.evtx -e delete_o.xml</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2018/12/08/F3Hff0.png" alt="F3Hff0.png"></p>
+<p>恢复后打开.xml这个文件，得到如下内容</p>
+<p><img src="https://s1.ax1x.com/2018/12/08/F3H4pV.png" alt="F3H4pV.png"></p>
+<p>令人遗憾的是，恢复出来了他是删除了第8条日志内容，我也对比了和其它几条的日志内容，发现这条日志内容多了一个ActicityID，我想这应该就是flag但并不是。而且我发现，这条日志里的内容和博客里恢复出来的内容几乎一模一样，所以我觉得思路肯定是没错的，但是不知道出题人想要的flag是什么（也没有提示），所以很遗憾，没有提交flag成功。但令人欣喜的是，了解了系统日志的删除和恢复思路，拓展了知识面。</p>
+<p>总结：这次的CTF的题目总体难度来说比较友好，两天的时间（因为还得上课所以加起来有一天左右）我可以做出来一部分题目（不像上次BCTF只能做个签到题），但因为时间的关系，其它的题目我还没有来得及去复盘和研究，平台已经把题目关闭了。。。。。。所以导致Web类的题目我没有机会去研究了，如果平台日后开放题目的话再去研究web类的题目。这两次的CTF经历让我知道，自己的见识面和经验还是很窄，厉害的大佬人家看见web的题目起码知道方向在哪里，而我打开网页后就抓瞎，并不知道怎么下手。。。人家看见流量分析后就想到了ftp我却没想到找成了POST。人家就知道仿射密码，然而我连听都没听过。。。这就是差距。这就是知识面和经验的问题，还有很多路要走，继续努力吧。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        </p><p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
