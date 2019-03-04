@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="pigstars7">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="PHP学习的一些小总结01">
+  <meta property="og:title" content="图片隐写题思路">
   <meta property="og:description" content="">
   <meta property="og:site_name" content="IMPROVE IN HERE">
   <meta property="og:type" content="article">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">PHP学习的一些小总结01</p>
+          <p class="title">图片隐写题思路</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-11-26</span>
+            <span class="date">2019-03-04</span>
             <span class="time">20:06:08</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/编程/">编程</a>
+<a href="/categories/技术/">技术</a>
 </span>
           
         </div>
@@ -115,7 +115,7 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/PHP/">#PHP</a>
+<a class="tag" href="/tags/CTF/">#CTF</a>
 
 
           </div>
@@ -123,25 +123,22 @@
         <!-- Post Main Content -->
         <div class="post-content">
           
-<p>关于PHP学习路上的一些问题总结以及知识点总结</p>
+<p>ctf整理</p>
 
-<h1 id="PHP学习的一些小总结01"><a href="#PHP学习的一些小总结01" class="headerlink" title="PHP学习的一些小总结01"></a>PHP学习的一些小总结01</h1><p>PHP的学习也学了一段时间，但是没有将笔记拿出来总结一下，也就一直放在OneNote里没有发到博客上。但是搭好的博客不能丢，所以就将我的一些学习笔记分享上来，其它的小伙伴也可以一起参考。</p>
-<h2 id="1-双引号和单引号有什么区别呢？"><a href="#1-双引号和单引号有什么区别呢？" class="headerlink" title="1.双引号和单引号有什么区别呢？"></a>1.双引号和单引号有什么区别呢？</h2><p>1.双引号解析变量，但是单引号不解析变量。</p>
-<p>2.在双引号里面插入变量，变量后面如果有英文或中文字符，它会把这个字符和变量拼接起来，视为一整个变量。一定要在变量后面接上特殊字符，例如空格等分开。 </p>
-<p>3.如果在双引号里面插变量的时候，后面不想有空格，可以拿大括号将变量包起来。 </p>
-<p>4.双引号解析转义字符，单引号不解析转义字符。但，单引号能解析\’ 和\ </p>
-<p>5.单引号效率高于双引号，尽可能使用单引号，因为双引号需要解析变量。 </p>
-<p>6.双号和单引号可以互插！！！双引号当中插入单引号，单引号当中插入变量，这个变量会被解析。 </p>
-<p>7.神奇的字符串拼接胶水——（.）点，用来拼接字符串。 </p>
-<p>8.我们将定界符声明字符串视为双引号一样的功能来看待。</p>
-<h2 id="2-主要有以下三空情况会产生空（null）类型："><a href="#2-主要有以下三空情况会产生空（null）类型：" class="headerlink" title="2.主要有以下三空情况会产生空（null）类型："></a>2.主要有以下三空情况会产生空（null）类型：</h2><p>1.通过变量赋值明确指定为变量的值为NULL</p>
-<p>2.一个变量没有给任何值</p>
-<p>3.使用函数unset()将变量销毁掉</p>
-<h2 id="3-两个跟null相关的函数，这两个函数非常常用"><a href="#3-两个跟null相关的函数，这两个函数非常常用" class="headerlink" title="3.两个跟null相关的函数，这两个函数非常常用"></a>3.两个跟null相关的函数，这两个函数非常常用</h2><p>empty()可以向括号中间传入一个变量。这个变量的值如果为false或者为null的话，返回true。</p>
-<p><a href="https://imgchr.com/i/FAgQSA" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/26/FAgQSA.md.png" alt="FAgQSA.md.png"></a></p>
-<p>sset()可以向括号中间传入一个或多个变量，变量与变量间用逗号分开。只要有一个变量为null，则返回false。否则，返回true。</p>
-<p><a href="https://imgchr.com/i/FAglQI" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/26/FAglQI.md.png" alt="FAglQI.md.png"></a></p>
-<p>unset()这个函数的功能是毁掉变量。unset（变量）括号中间插入想要毁掉的变量名，这个变量就会被毁掉。</p>
+<h1 id="图片隐写题思路"><a href="#图片隐写题思路" class="headerlink" title="图片隐写题思路"></a>图片隐写题思路</h1><p>做CTF杂项的时候会碰到让下载图片，从图片里面找flag，这里介绍两个软件binwalk和foremost,它可以查看下载的文件中是否包含其它文件。</p>
+<h2 id="0X01-binwalk相关命令"><a href="#0X01-binwalk相关命令" class="headerlink" title="0X01 binwalk相关命令"></a>0X01 binwalk相关命令</h2><p>打开kail，直接在终端输入binwalk（前提是kali安装了这个软件，如果没有需要自己搜一下具体安装方法）。打开软件后，使用命令“binwalk -e 文件路径”就可以分离所需要分离的文件了。</p>
+<p>这里以bugku一道题为例，下载后来得到如下图片：</p>
+<p><img src="https://s2.ax1x.com/2019/03/04/kOxqTP.jpg" alt="kOxqTP.jpg"></p>
+<p>将这张图片放到桌面并用binwalk打开它</p>
+<p><a href="https://imgchr.com/i/kOxoyd" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/03/04/kOxoyd.md.png" alt="kOxoyd.md.png"></a></p>
+<p><a href="https://imgchr.com/i/kOxIQH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/03/04/kOxIQH.md.png" alt="kOxIQH.md.png"></a></p>
+<p>这里可以看到这张图片里包含了两个图片文件，159124和162196，用命令“binwalk -e 文件路径”将其分离随后得到另一张含有flag的图片</p>
+<p><a href="https://imgchr.com/i/kOxHeI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/03/04/kOxHeI.md.png" alt="kOxHeI.md.png"></a></p>
+<h2 id="0X02foremost相关命令"><a href="#0X02foremost相关命令" class="headerlink" title="0X02foremost相关命令"></a>0X02foremost相关命令</h2><p>foremost的命令是”foremost -T 文件名”，然后会在桌面有一个输出文件夹，里面就会有分离出来的含有flag的图片。</p>
+<h2 id="0X03-“dd”相关命令"><a href="#0X03-“dd”相关命令" class="headerlink" title="0X03 “dd”相关命令"></a>0X03 “dd”相关命令</h2><p>使用方法如下</p>
+<p><img src="https://s2.ax1x.com/2019/03/04/kOxbwt.png" alt="kOxbwt.png"></p>
+<p>相关的其它命令如下</p>
+<p><img src="https://s2.ax1x.com/2019/03/04/kOxOFf.png" alt="kOxOFf.png"></p>
 
         </div>
       </div>
